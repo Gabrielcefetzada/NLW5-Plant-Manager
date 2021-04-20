@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react';
-import { StyleSheet, Text, Dimensions, Image, TouchableOpacity, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, Dimensions, Image, SafeAreaView } from 'react-native';
 
 import wateringImg from '../assets/watering.png'
 import Button from '../components/Button'
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginLeft: 20,
         marginRight: 20,
-        marginTop: 400,
     },
 
     title: {
