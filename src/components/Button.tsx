@@ -27,20 +27,24 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'space-around',
+        marginTop: 75,
     },
 
     button: {
-        backgroundColor: 'green',
+        backgroundColor: '#11ba51',
         justifyContent: 'center',
         alignItems: 'center',
-        height: 56,
-        width: 56
+        height: 66,
+        width: 66,
+        padding: 10,
+        borderRadius: 15
     },
 
     textBtn: {
         color: 'white',
-        fontSize: 24
+        fontSize: 24,
+        fontFamily: 'sans-serif-condensed'
     }
 })
 

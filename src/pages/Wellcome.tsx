@@ -1,25 +1,40 @@
 
-import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, Dimensions, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 
 import wateringImg from '../assets/watering.png'
 import Button from '../components/Button'
 
-export default function Wellcome() {
+export function Wellcome() {
+
+const [visible, setVisible] = useState(false);
+
+const handleVisibility = () => {
+    setVisible(true)
+}
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
         Cuide das suas plantas {'\n'}     
-        de uma forma inteligente e fácil!
+        de uma forma {'\n'}
+        inteligente e fácil!
+        {'\n'}
       </Text>
 
-      <Image source={wateringImg} style={styles.image}/>
+      <Image 
+        source={wateringImg} 
+        style={styles.image}
+        resizeMode="contain"
 
-      <Text style={styles.subtitle}>Não esqueça mais de regar suas plantas.
+      />
+
+      <Text style={styles.subtitle}>
+          {'\n'}
+          Não se esqueça mais de regar suas plantas.
           nós cuidamos de lembrar você sempre que precisar.
       </Text>
 
-      <Button title="Avançar" />
+      <Button title=">" onPress={handleVisibility}/>
 
     </SafeAreaView>
   );
@@ -29,26 +44,32 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 400,
     },
 
     title: {
-        fontsize: 32,
+        fontSize: 28,
         fontWeight: 'bold',
         textAlign: 'center',
         color: 'green',
-        marginTop: 38
+        marginTop: 38,
+        fontFamily: 'Roboto'
     },
 
     subtitle: {
         textAlign: 'center',
-        fontsize: 18,
+        fontSize: 18,
         paddingHorizontal: 20,
-        color: 'green'
+        color: '#11ba51',
+        fontFamily: 'Roboto',
+        lineHeight: 30
     },
 
     image: {
-        width: 292,
+        width: Dimensions.get('window').width * 0.7,
         height: 284
     },
 
