@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, SafeAreaView, View, Text, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 
 import { ButtonMoreUsed } from '../components/ButtonMoreUsed'
+import { useNavigation } from '@react-navigation/core'
 
 export function Userindentification() {
 
@@ -21,6 +22,12 @@ export function Userindentification() {
     const handleInputChange = (value: string) => {
         setIsFilled(!! value)
         setName(value)
+    }
+
+    const navigation = useNavigation()
+
+    const handleSubmit = () => {
+      navigation.navigate('Confirmation')
     }
 
     return (
@@ -43,7 +50,7 @@ export function Userindentification() {
                             placeholder="Digite o seu nome"
                             style={[styles.input, (isFocused || isFilled) && { borderBottomColor: 'green'} ]}
                         />
-                       <ButtonMoreUsed title="Confirmar"/> 
+                       <ButtonMoreUsed title="Confirmar" onPress={handleSubmit}/> 
                     </View>
                 </View>
             </KeyboardAvoidingView>

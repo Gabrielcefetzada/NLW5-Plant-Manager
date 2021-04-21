@@ -8,8 +8,7 @@ interface ButtonProps extends TouchableOpacityProps {
 
 export default function Button({ title, ...rest } : ButtonProps) {
 
-  return (
-    <SafeAreaView style={styles.container}>      
+  return (     
       <TouchableOpacity 
       activeOpacity={0.7}
       style={styles.button}
@@ -19,7 +18,6 @@ export default function Button({ title, ...rest } : ButtonProps) {
             { title } 
           </Text>
       </TouchableOpacity>
-    </SafeAreaView>
   );
 }
 
@@ -28,7 +26,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-around',
-        marginTop: 75,
+        marginTop: 15,
     },
 
     button: {
@@ -38,6 +36,7 @@ const styles = StyleSheet.create({
         height: 66,
         width: 66,
         padding: 10,
+        marginTop: 25,
         borderRadius: 15
     },
 

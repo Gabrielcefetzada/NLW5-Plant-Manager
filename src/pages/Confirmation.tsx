@@ -59,6 +59,8 @@ const styles = StyleSheet.create({
     footer: {
         width: '100%',
         padding: 20,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 
 })

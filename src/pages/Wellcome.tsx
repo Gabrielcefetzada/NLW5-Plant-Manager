@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/core'
 
 export function Wellcome() {
 
-  const navigation = useNavigation()
+ const navigation = useNavigation()
 
   const handleStart = () => {
     navigation.navigate('UserIdentificationner')
@@ -34,9 +34,9 @@ export function Wellcome() {
           {'\n'}
           Não se esqueça mais de regar suas plantas.
           nós cuidamos de lembrar você sempre que precisar.
-      </Text>
+      </Text> 
 
-      <Button title=">"/>
+      <Button title=">" onPress={handleStart}/>
 
     </SafeAreaView>
   );
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginLeft: 20,
         marginRight: 20,
+        marginTop: 40
     },
 
     title: {

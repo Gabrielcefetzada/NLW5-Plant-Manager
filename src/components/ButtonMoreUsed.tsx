@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: '#11ba51',
         justifyContent: 'space-around',
+        textAlign: 'center',
         alignItems: 'center',
         height: 56,
         width: Dimensions.get('window').width * 0.7,
