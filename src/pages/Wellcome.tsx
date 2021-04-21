@@ -4,14 +4,16 @@ import { StyleSheet, Text, Dimensions, Image, SafeAreaView } from 'react-native'
 
 import wateringImg from '../assets/watering.png'
 import Button from '../components/Button'
+import { useNavigation } from '@react-navigation/core'
 
 export function Wellcome() {
 
-const [visible, setVisible] = useState(false);
+  const navigation = useNavigation()
 
-const handleVisibility = () => {
-    setVisible(true)
-}
+  const handleStart = () => {
+    navigation.navigate('UserIdentificationner')
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
@@ -34,7 +36,7 @@ const handleVisibility = () => {
           nós cuidamos de lembrar você sempre que precisar.
       </Text>
 
-      <Button title=">" onPress={handleVisibility}/>
+      <Button title=">"/>
 
     </SafeAreaView>
   );

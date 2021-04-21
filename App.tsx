@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { Confirmation } from './src/pages/Confirmation'
+import { Routes } from './src/routes'
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <Confirmation/>
+      <Routes/>
     </SafeAreaView>
   );
 }

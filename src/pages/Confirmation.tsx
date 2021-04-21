@@ -8,7 +8,7 @@ export function Confirmation() {
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
                 <Text style={styles.emoji}>
-                😀
+                🥳
                 </Text>
 
                 <Text style={styles.title}>
