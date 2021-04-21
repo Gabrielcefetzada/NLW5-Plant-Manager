@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { Userindentification } from './src/pages/Userindentification'
+import { Confirmation } from './src/pages/Confirmation'
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <Userindentification/>
+      <Confirmation/>
     </SafeAreaView>
   );
 }

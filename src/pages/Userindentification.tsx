@@ -1,12 +1,33 @@
-import React from 'react';
-import { StyleSheet, SafeAreaView, View, Text, TextInput, KeyboardAvoidingView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, SafeAreaView, View, Text, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 
 import { ButtonMoreUsed } from '../components/ButtonMoreUsed'
 
 export function Userindentification() {
+
+    const [isFocused, setIsFocused] = useState(false)
+    const [isFilled, setIsFilled] = useState(false)
+    const [name, setName] = useState<string>()
+
+    const handleFocus = () => {
+        setIsFocused(true)
+        setIsFilled(!! name)
+    }
+
+    const handleBlur = () => {
+        setIsFocused(false)
+    }
+
+    const handleInputChange = (value: string) => {
+        setIsFilled(!! value)
+        setName(value)
+    }
+
     return (
         <SafeAreaView style={styles.container}>
-            <KeyboardAvoidingView style={styles.container}>
+            <KeyboardAvoidingView
+             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+             style={styles.container}>
                 <View style={styles.content}>
                     <View style={styles.form}>
                         <Text style={styles.emoji}>
@@ -15,11 +36,14 @@ export function Userindentification() {
                         <Text style={styles.title}>
                             Como podemos {'\n'} chamar você?
                         </Text>
-                        <TextInput 
+                        <TextInput
+                            onBlur={handleBlur} 
+                            onFocus={handleFocus}
+                            onChangeText={handleInputChange}
                             placeholder="Digite o seu nome"
-                            style={styles.input}
-                            />
-                        <ButtonMoreUsed title="Confirmar"/>
+                            style={[styles.input, (isFocused || isFilled) && { borderBottomColor: 'green'} ]}
+                        />
+                       <ButtonMoreUsed title="Confirmar"/> 
                     </View>
                 </View>
             </KeyboardAvoidingView>
@@ -68,7 +92,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'green',
         fontFamily: 'Roboto',
-        marginTop: 20
+        marginTop: 20,
+        fontWeight: 'bold'
     }
 
 

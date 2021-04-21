@@ -9,7 +9,7 @@ interface ButtonMoreUsedProps extends TouchableOpacityProps {
 export function ButtonMoreUsed({ title, ...rest } : ButtonMoreUsedProps) {
 
   return (
-    <SafeAreaView style={styles.container}>      
+         
       <TouchableOpacity 
       activeOpacity={0.7}
       style={styles.button}
@@ -19,7 +19,7 @@ export function ButtonMoreUsed({ title, ...rest } : ButtonMoreUsedProps) {
             { title } 
           </Text>
       </TouchableOpacity>
-    </SafeAreaView>
+    
   );
 }
 
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
         height: 56,
         width: Dimensions.get('window').width * 0.7,
         padding: 10,
-        borderRadius: 15
+        borderRadius: 15,
+        marginTop: 15,
     },
 
     textBtn: {
