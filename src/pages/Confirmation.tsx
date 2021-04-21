@@ -2,8 +2,16 @@ import React from 'react';
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native';
 
 import { ButtonMoreUsed } from '../components/ButtonMoreUsed'
+import { useNavigation } from '@react-navigation/core'
 
 export function Confirmation() {
+
+    const navigation = useNavigation()
+
+    const handleMoveOn = () => {
+        navigation.navigate('PlantSelect')
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
@@ -21,7 +29,7 @@ export function Confirmation() {
             </View>
 
             <View style={styles.footer}>
-                <ButtonMoreUsed title="Vamos lá!"/>
+                <ButtonMoreUsed title="Vamos lá!" onPress={handleMoveOn}/>
             </View>
         </SafeAreaView>
     )
