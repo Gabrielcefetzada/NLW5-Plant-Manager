@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Text, View, StyleSheet, ScrollView } from 'react-native'
+import {Text, View, StyleSheet, ScrollView, Image, Dimensions } from 'react-native'
 
 import { Header } from '../components/Header'
 import { EnviromentBtn } from '../components/EnviromentBtn'
@@ -31,6 +31,7 @@ export function PlantSelect(){
     const [plants, setPlants] = useState<PlantProps[]>([])
     const [plantsFiltered, setPlantsFiltered] = useState<PlantProps[]>([])
     const [environmentSelected, setEnviromentSelected] = useState('all')
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function fetchEnviroment(){
@@ -50,6 +51,8 @@ export function PlantSelect(){
         async function fetchPlants(){
             const { data } = await api.get('plants?_sort=name&_order=asc')
             setPlants(data)
+            setPlantsFiltered(data)
+            setLoading(false)
         }
 
         fetchPlants()
@@ -68,21 +71,28 @@ export function PlantSelect(){
         setPlantsFiltered(filtered)
     }
 
+
     return (
         <View style={styles.container}> 
             <Header />
             <Text style={styles.title}>Em qual ambiente {'\n'}você quer colocar sua planta?</Text>
             <View>
+        
             <ScrollView horizontal style={styles.containerEnviroments}>
                     {enviroments.map((elem, index) => {
-                        return  <EnviromentBtn active={elem.key === environmentSelected}
-                                                onPress={() => handleEnvironmentSelected(elem.key)}
-                                                key={index}
-                                                title={elem.title} 
+                        return  <EnviromentBtn 
+                                     active={elem.key === environmentSelected}
+                                     onPress={() => handleEnvironmentSelected(elem.key)}
+                                     key={index}
+                                     title={elem.title} 
                                 />
                     })}
             </ScrollView>
             </View>
+
+            {loading && (
+                 <Image style={styles.loading} source={{ uri: "https://www.valottery.com/images/spinner_green.gif"}}/>
+            )}
 
             <View style={styles.plants}>
             <ScrollView style={styles.contentPlants}>
@@ -128,5 +138,13 @@ const styles = StyleSheet.create({
 
     contentPlants: {
         
+    },
+
+    loading: {
+        marginLeft: Dimensions.get('window').width * 0.5 - 50,
+        width: 90,
+        height: 90,
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 })

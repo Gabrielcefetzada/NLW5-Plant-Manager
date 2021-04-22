@@ -18,7 +18,8 @@ export const PlantCardPrimary = ({data, ...rest} : PlantProps) => {
             <SvgFromUri 
             width={70}
             height={70}
-            uri={data.photo}/>
+            uri={data.photo}
+            />
             <Text style={styles.text}>{data.name}</Text>
         </RectButton>
     )
