@@ -6,20 +6,10 @@ import waterdrop from '../assets/waterdrop.png'
 import { ButtonMoreUsed } from '../components/ButtonMoreUsed'
 import { useRoute } from '@react-navigation/core'
 import DateTimePicker, { Event} from '@react-native-community/datetimepicker'
+import { plantLoad, PlantProps, plantSave } from '../libs'
 
 interface Params {
-    plant: {
-        id: string;
-        name: string;
-        about: string;
-        water_tips: string;
-        photo: string;
-        environments: [string];
-        frequency: {
-            times: number;
-            repeat_every: string;
-        }
-    }
+    plant: PlantProps
 }
 
 
@@ -42,6 +32,22 @@ export function PlantSave(){
 
         if(dateTime){
             setSelectedDateTime(dateTime)
+        }
+    }
+
+    const handleOpenDateTimePickerForAndroid = () => {
+        setShowDatePicker(oldState => !oldState)
+    }
+
+    const handleRegister = async () => {
+       const data = await plantLoad()
+        try {
+            await plantSave({
+                ...plant,
+                dateTimeNotification: selectedDateTime
+            })
+        } catch {
+            alert("Não foi possível salvar :(")
         }
     }
 
@@ -73,17 +79,32 @@ export function PlantSave(){
             </View>
 
             <Text style={styles.alertLabel}>
-                 Escolha o melhor horário para ser lembrado
+                 Escolha o melhor horário para ser lembrado de regá-la
             </Text>
 
-            <DateTimePicker 
-                value={selectedDateTime}
-                mode="time"
-                display="spinner"
-                onChange={handleChangeTime}
-            />
+            {
+                showDatePicker && (
+                    <DateTimePicker 
+                        value={selectedDateTime}
+                        mode="time"
+                        display="spinner"
+                        onChange={handleChangeTime}
+                     />
+                )
+            }
 
-            <ButtonMoreUsed title="Cadastrar planta" onPress={() => {}}/>
+            {
+                Platform.OS === 'android' && (
+                    <TouchableOpacity onPress={handleOpenDateTimePickerForAndroid} style={styles.dataTimeBtn}>
+                        <Text style={styles.dateTimePickerText}>
+                            Mudar horário
+                        </Text>
+                    </TouchableOpacity>
+                )
+            
+            }
+
+            <ButtonMoreUsed title="Cadastrar planta" onPress={() => {handleRegister}}/>
         </View>
     </View>
     </ScrollView>
@@ -163,6 +184,21 @@ const styles = StyleSheet.create({
         color: 'grey',
         fontSize: 12,
         marginBottom: 5
+    },
+
+    dateTimePickerText: {
+        color: '#3b3b3b',
+    },
+
+    dataTimeBtn: {
+        width: '75%',
+        backgroundColor: '#f2f0f0',
+        padding: 15,
+        borderRadius: 15,
+        marginTop: 15,
+        alignItems: 'center',
+        textAlign: 'center'
+        
     }
 
     
