@@ -73,9 +73,9 @@ export function PlantSelect(){
         setPlantsFiltered(filtered)
     }
 
-    const onNavigation = () => {
+    const onNavigation = (plant: PlantProps) => {
 
-         navigation.navigate('PlantSave')
+         navigation.navigate('PlantSave', { plant })
 
     }
 
@@ -104,7 +104,7 @@ export function PlantSelect(){
             <View style={styles.plants}>
             <ScrollView style={styles.contentPlants}>
                     {plantsFiltered.map((elem, index) => {
-                        return  <PlantCardPrimary key={index} data={elem} onPress={() => onNavigation()}/>
+                        return  <PlantCardPrimary key={index} data={elem} onPress={() => onNavigation(elem)}/>
                     })}
             </ScrollView>
             </View>
