@@ -5,6 +5,7 @@ import { Header } from '../components/Header'
 import { EnviromentBtn } from '../components/EnviromentBtn'
 import api from '../services/api'
 import { PlantCardPrimary } from '../components/PlantCardPrimary';
+import { useNavigation } from '@react-navigation/core'
 
 interface EnviromentProps {
     key: string;
@@ -32,6 +33,7 @@ export function PlantSelect(){
     const [plantsFiltered, setPlantsFiltered] = useState<PlantProps[]>([])
     const [environmentSelected, setEnviromentSelected] = useState('all')
     const [loading, setLoading] = useState(true)
+    const navigation = useNavigation()
 
     useEffect(() => {
         async function fetchEnviroment(){
@@ -71,6 +73,11 @@ export function PlantSelect(){
         setPlantsFiltered(filtered)
     }
 
+    const onNavigation = () => {
+
+         navigation.navigate('PlantSave')
+
+    }
 
     return (
         <View style={styles.container}> 
@@ -78,7 +85,7 @@ export function PlantSelect(){
             <Text style={styles.title}>Em qual ambiente {'\n'}você quer colocar sua planta?</Text>
             <View>
         
-            <ScrollView horizontal style={styles.containerEnviroments}>
+            <ScrollView showsHorizontalScrollIndicator={false} horizontal style={styles.containerEnviroments}>
                     {enviroments.map((elem, index) => {
                         return  <EnviromentBtn 
                                      active={elem.key === environmentSelected}
@@ -97,7 +104,7 @@ export function PlantSelect(){
             <View style={styles.plants}>
             <ScrollView style={styles.contentPlants}>
                     {plantsFiltered.map((elem, index) => {
-                        return  <PlantCardPrimary key={index} data={elem}/>
+                        return  <PlantCardPrimary key={index} data={elem} onPress={() => onNavigation()}/>
                     })}
             </ScrollView>
             </View>

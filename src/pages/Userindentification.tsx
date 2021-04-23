@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, SafeAreaView, View, Text, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { ButtonMoreUsed } from '../components/ButtonMoreUsed'
 import { useNavigation } from '@react-navigation/core'
@@ -26,8 +27,14 @@ export function Userindentification() {
 
     const navigation = useNavigation()
 
-    const handleSubmit = () => {
-      navigation.navigate('Confirmation')
+    const handleSubmit = async () => {
+
+        if(!name) {
+            return alert("Amigão, você precisa digitar seu nome")
+        }
+
+        await AsyncStorage.setItem('@plantmanager:user', name)
+        navigation.navigate('Confirmation')
     }
 
     return (
