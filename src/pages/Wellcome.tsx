@@ -17,9 +17,9 @@ export function Wellcome() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
-        Cuide das suas plantas {'\n'}     
-        de uma forma {'\n'}
-        inteligente e fácil!
+        Mantenha se informado {'\n'}     
+        nesse bonito mundo {'\n'}
+        botânico!
         {'\n'}
       </Text>
 
@@ -32,8 +32,8 @@ export function Wellcome() {
 
       <Text style={styles.subtitle}>
           {'\n'}
-          Não se esqueça mais de regar suas plantas.
-          nós cuidamos de lembrar você sempre que precisar.
+          Informações interessantes sobre as plantinhas 
+          serão passadas à você.
       </Text> 
 
       <Button title=">" onPress={handleStart}/>

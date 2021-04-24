@@ -2,7 +2,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useEffect, useState } from 'react';
 import { Text, Image, View, StyleSheet } from 'react-native'
 
-import userImg from '../assets/gabriel_github.jpeg'
 
 export function Header(){
 
@@ -21,11 +20,9 @@ export function Header(){
     return (
         <View style={styles.container}>
             <View>
-                <Text style={styles.greeting}>Olá,</Text>
-                <Text style={styles.userName}>{userName}</Text>
+                <Text style={styles.userName}>{userName},</Text>
             </View>
 
-            <Image  style={styles.image}source={userImg}/>
         </View>
     )
 }
@@ -35,7 +32,7 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         padding: 20,
         marginTop: '15%'
     },

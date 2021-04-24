@@ -6,7 +6,7 @@ import { EnviromentBtn } from '../components/EnviromentBtn'
 import api from '../services/api'
 import { PlantCardPrimary } from '../components/PlantCardPrimary';
 import { useNavigation } from '@react-navigation/core'
-import { PlantProps } from '../libs';
+import { PlantProps } from '../libs/storage';
 
 interface EnviromentProps {
     key: string;
@@ -69,8 +69,10 @@ export function PlantSelect(){
     return (
         <View style={styles.container}> 
             <Header />
-            <Text style={styles.title}>Em qual ambiente {'\n'}você quer colocar sua planta?</Text>
+            <Text style={styles.title}>Aqui estão algumas espécies. Clique para ver detalhes. {'\n'}</Text>
             <View>
+
+            <Text style={styles.filter}>Filtre por ambiente</Text>
         
             <ScrollView showsHorizontalScrollIndicator={false} horizontal style={styles.containerEnviroments}>
                     {enviroments.map((elem, index) => {
@@ -105,9 +107,20 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        fontSize: 17,
+        lineHeight: 30,
+        textAlign: 'center',
+        width: '90%',
+        fontSize: 20,
         color: 'grey',
         margin: 20
+    },
+
+    filter: {
+        lineHeight: 30,
+        width: '90%',
+        fontSize: 15,
+        color: 'grey',
+        marginLeft: 20,
     },
 
     environmentList: {
