@@ -1,5 +1,5 @@
 # App to view information about differents especies of plants.
-Tecnologias learned and used:
+Tecnology learned and used:
 
 * React-native
 * Typescript
