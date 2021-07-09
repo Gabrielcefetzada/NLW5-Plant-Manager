@@ -1,5 +1,5 @@
 # App to view information about differents especies of plants.
-Tecnologias usadas, aprendidas e aperfeiçoadas:
+Tecnologias learned and used:
 
 * React-native
 * Typescript
